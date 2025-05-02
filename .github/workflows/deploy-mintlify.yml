@@ -23,10 +23,10 @@ jobs:
           npm install --platform=linux --arch=x64 sharp
 
       - name: Build Mintlify
-        run: npx mintlify dev
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.next
+          publish_dir: ./build
