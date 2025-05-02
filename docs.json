@@ -1,0 +1,134 @@
+{
+  "name": "mgks.dev Docs",
+  "favicon": "/favicon.png",
+  "theme": "willow",
+  "logo": {
+    "light": "/assets/logo/white.png",
+    "dark": "/assets/logo/black.png"
+  },
+  "colors": {
+    "primary": "#0a5eb0",
+    "light": "#0a7ae7",
+    "dark": "#ff570d"
+  },
+  "search": {
+    "location": "top"
+  },
+  "navigation": {
+    "anchors": [
+      {
+        "anchor": "Welcome",
+        "icon": "house",
+        "groups":[
+          {
+            "group": "Welcome",
+            "pages": [
+              "/index"
+            ]
+          }
+        ]
+      },
+      {
+        "anchor": "Memoryblock",
+        "icon": "cube",
+        "href": "https://docs.memoryblock.io",
+        "external": true
+      },
+      {
+        "anchor": "Smart Webview",
+        "icon": "mobile",
+        "groups":[
+          {
+            "group": "Overview",
+            "pages": [
+              "smart-webview/introduction",
+              "smart-webview/getting-started",
+              "smart-webview/configuration",
+              "smart-webview/customization"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "smart-webview/features/file-handling",
+              "smart-webview/features/location",
+              "smart-webview/features/firebase-messaging",
+              "smart-webview/features/analytics",
+              "smart-webview/features/navigation",
+              "smart-webview/features/sharing",
+              "smart-webview/features/rating-system",
+              "smart-webview/features/printing"
+            ]
+          },
+          {
+            "group": "Plugins",
+            "pages": [
+              "smart-webview/plugins/architecture",
+              "smart-webview/plugins/creating-plugins",
+              "smart-webview/plugins/playground",
+              "smart-webview/plugins/toast",
+              "smart-webview/plugins/admob",
+              "smart-webview/plugins/google-auth",
+              "smart-webview/plugins/qr-barcode-reader",
+              "smart-webview/plugins/biometric-auth",
+              "smart-webview/plugins/image-compression",
+              "smart-webview/plugins/css-injection",
+              "smart-webview/plugins/payment-gateway"
+            ]
+          },
+          {
+            "group": "Contributing",
+            "pages": [
+              "smart-webview/contributing",
+              "smart-webview/license"
+            ]
+          }
+        ]
+      },
+      {
+        "anchor": "GitHub Tree",
+        "icon": "tree",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "github-tree/index",
+              "github-tree/usage"
+            ]
+          }
+        ]
+      },
+      {
+        "anchor": "Keep to Notes",
+        "icon": "notebook",
+        "groups": [
+          {
+            "group": "Documentation",
+            "pages": [
+              "keep-to-notes/index",
+              "keep-to-notes/migration"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/mgks"
+    }
+  },
+  "style": {
+    "customCss": "/styles/custom.css"
+  },
+  "analytics": {
+    "ga4": {
+      "measurementId": "G-FT8PC9G3SY"
+    }
+  },
+  "feedback": {
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
+  "openapi": "none"
+}
