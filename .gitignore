@@ -130,3 +130,4 @@ dist
 .pnp.*
 
 site
+.DS_Store
