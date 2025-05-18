@@ -3,17 +3,16 @@
     "version": "1.0.0",
     "description": "Documentation site for mgks.dev apps and services including Smart WebView + Plugins, PaperlessQL, GitHub Tree, Keep to Notes, and more.",
     "scripts": {
-      "dev": "mintlify dev",
-      "build": "mintlify build",
-      "preview": "npx serve build"
-    },
-    "devDependencies": {
-      "mintlify": "^4.0.0"
+        "dev": "docmd dev",
+        "build": "docmd build",
+        "preview": "npx serve build"
     },
     "engines": {
-      "node": ">=20.0.0"
+        "node": ">=22.0.0"
     },
     "license": "MIT",
-    "private": true
-  }
-  
+    "private": true,
+    "dependencies": {
+        "@mgks/docmd": "^0.1.3"
+    }
+}
