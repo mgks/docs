@@ -25,13 +25,8 @@ Whether you need a simple web wrapper or a more complex hybrid application with 
 
 <img
   className="block dark:hidden"
-  src="/assets/swv_banner.jpg"
+  src="/assets/images/swv_banner.jpg"
   alt="SmartWebView Banner Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/assets/swv_banner.jpg"
-  alt="SmartWebView Banner Dark"
 />
 
 **Ready to get started?** Head over to the [Getting Started](/smart-webview/getting-started) guide.
