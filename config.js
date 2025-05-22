@@ -1,7 +1,7 @@
 // config.js: basic config for docmd
 module.exports = {
   // Core Site Metadata
-  siteTitle: 'docmd',
+  siteTitle: 'mgks.dev documentation',
   // Define a base URL for your site, crucial for SEO and absolute paths
   // No trailing slash
   siteUrl: 'https://docs.mgks.dev', // Replace with your actual deployed URL
