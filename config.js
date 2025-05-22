@@ -215,5 +215,5 @@ module.exports = {
 
   // Favicon Configuration
   // Path relative to outputDir root
-  favicon: '/assets/favicon.ico',
+  favicon: '/assets/favicon.png',
 };
