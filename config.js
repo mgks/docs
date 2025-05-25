@@ -82,10 +82,10 @@ module.exports = {
           { title: 'Configuration', path: '/smart-webview/configuration', icon: 'settings'},
           { title: 'Customization', path: '/smart-webview/customization', icon: 'settings-2'},
           { title: 'Features',
-            path: '/smart-webview/features/file-handling',
+            path: '/smart-webview/features',
             icon: 'zap',
             children: [
-              { title: 'File Handling', path: '/smart-webview/features/file-handling', icon: 'file'},
+              { title: 'File Handling', path: '/smart-webview/features', icon: 'file'},
               { title: 'Location', path: '/smart-webview/features/location', icon: 'map-pin'},
               { title: 'Firebase Messaging', path: '/smart-webview/features/firebase-messaging', icon: 'bell'},
               { title: 'Analytics', path: '/smart-webview/features/analytics', icon: 'chart-line'},
@@ -96,10 +96,10 @@ module.exports = {
             ]
           },
           { title: 'Plugins',
-            path: '/smart-webview/plugins/architecture',
+            path: '/smart-webview/plugins',
             icon: 'plug',
             children: [
-              { title: 'Architecture', path: '/smart-webview/plugins/architecture', icon: 'file-code'},
+              { title: 'Architecture', path: '/smart-webview/plugins', icon: 'file-code'},
               { title: 'Creating Plugins', path: '/smart-webview/plugins/creating-plugins', icon: 'file-code'},
               { title: 'Playground', path: '/smart-webview/plugins/playground', icon: 'file-code'},
               { title: 'Toast', path: '/smart-webview/plugins/toast', icon: 'file-code'},
