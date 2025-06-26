@@ -28,9 +28,9 @@ SOFTWARE.
 
 ---
 
-You can find the full license text in the repository:
-
-<Card horizontal title="View LICENSE File on GitHub" icon="github" href="https://github.com/mgks/Android-SmartWebView/blob/master/LICENSE" target="_blank">
-</Card>
-<Card horizontal title="Read MIT License Definition" icon="osi" href="https://opensource.org/licenses/MIT" target="_blank">
-</Card>
+::: card
+[View LICENSE File on GitHub](https://github.com/mgks/Android-SmartWebView/blob/master/LICENSE)
+:::
+::: card
+[Read MIT License Definition](https://opensource.org/licenses/MIT)
+:::

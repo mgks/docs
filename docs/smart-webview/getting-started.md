@@ -38,9 +38,9 @@ If you plan to use Firebase Cloud Messaging (Push Notifications), you need to ad
     │   └── ...
     └── ...
     ```
-    ::: callout tip
-    This step is crucial for Firebase features to work. See the [Firebase Messaging](/features/firebase-messaging) guide for more details.
-    :::
+::: callout tip
+This step is crucial for Firebase features to work. See the [Firebase Messaging](/smart-webview/features/firebase-messaging) guide for more details.
+:::
 
 ### Step 3: Load Project in Android Studio
 

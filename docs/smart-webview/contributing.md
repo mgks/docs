@@ -13,54 +13,52 @@ Contributions to Smart WebView are welcome! Whether it's fixing bugs, improving 
 1.  **Fork the Repository:**
     Start by forking the main repository on GitHub to your own account.
 
-    <Card horizontal title="Fork Smart WebView on GitHub" icon="code-fork" href="https://github.com/mgks/Android-SmartWebView/fork" target="_blank">
-    </Card>
+    **[Fork Smart WebView on GitHub](https://github.com/mgks/Android-SmartWebView/fork)**
 
 2.  **Clone Your Fork:**
     Clone your forked repository to your local machine.
     ```bash
-        git clone https://github.com/YOUR_USERNAME/Android-SmartWebView.git
-        cd Android-SmartWebView
+    git clone https://github.com/YOUR_USERNAME/Android-SmartWebView.git
+    cd Android-SmartWebView
     ```
 
 3.  **Create a Feature Branch:**
-    Create a new branch for your changes. Use a descriptive name (e.g., `fix-fcm-token-bug`, `feature-add-qrcode-scanner`).
+    Create a new branch for your changes. Use a descriptive name (e.g., `fix-fcm-token-bug`, `feature-add-file-download-progress`).
     ```bash
-        git checkout -b my-new-feature
+    git checkout -b my-new-feature
     ```
 
 4.  **Make Your Changes:**
-    Implement your bug fix or feature enhancement. Follow the existing code style and conventions.
+    Implement your bug fix or feature. Follow the existing code style and conventions.
 
 5.  **Test Your Changes:**
-    Ensure your changes work correctly and don't introduce regressions. Test on different OS versions and devices if possible.
+    Ensure your changes work correctly and don't introduce regressions.
 
 6.  **Commit Your Changes:**
-    Commit your changes with a clear and concise commit message.
+    Commit your changes with a clear and concise message.
     ```bash
-        git add .
-        git commit -m "Add feature: Describe your changes briefly"
-        # Or for bug fixes:
-        # git commit -m "Fix: Describe the bug and the fix"
+    git add .
+    git commit -m "feat: Describe your new feature"
+    # or for bug fixes:
+    # git commit -m "fix: Describe the bug and the fix"
     ```
 
 7.  **Push to Your Fork:**
-    Push your feature branch to your forked repository on GitHub.
+    Push your feature branch to your forked repository.
     ```bash
-        git push origin my-new-feature
+    git push origin my-new-feature
     ```
 
 8.  **Create a Pull Request (PR):**
-    Go to the original Smart WebView repository on GitHub and create a new Pull Request from your feature branch (`YOUR_USERNAME/my-new-feature`) to the main repository's `master` (or relevant target) branch.
-    *   Provide a clear title and description for your PR, explaining the changes you made and why.
+    Go to the original Smart WebView repository and create a new Pull Request from your feature branch to the `master` branch.
+    *   Provide a clear title and description for your PR.
     *   Reference any related issues (e.g., "Closes #123").
 
 ---
 
 ## Code of Conduct
 
-Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
-Read the [CODE_OF_CONDUCT.md](https://github.com/mgks/Android-SmartWebView/blob/master/CODE_OF_CONDUCT.md) file in the repository.
+Please note that this project is released with a Contributor Code of Conduct. By participating, you agree to abide by its terms.
 
 ---
 
