@@ -11,5 +11,5 @@ This is a premium plugin and is not included in the open-source project. Its sou
 :::
 
 ::: callout warning
-**THIS PLUGIN IS STILL UNDER CONSTRUCTION.**
+**THIS PLUGIN IS UNDER DEVELOPMENT.**
 :::
