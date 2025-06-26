@@ -1,91 +1,58 @@
 ---
 title: 'Rating System'
-description: 'Prompting users to rate your app on the app store.'
+description: 'Prompting users to rate your app on the Google Play store.'
 icon: 'star'
 ---
 
-Smart WebView includes mechanisms to prompt users to rate your application on the relevant app store after certain usage conditions are met.
+Smart WebView includes a system to prompt users to rate your application after certain usage conditions are met. This feature is based on the [Android-Rate](https://github.com/hotchemi/Android-Rate) library.
 
 ---
 
 ## Enabling and Configuring
 
-**Configuration:**
+This feature is enabled and configured using variables in `SmartWebView.java`.
 
-<Tabs>
- <Tab title="Android">
-    The prompt is enabled/disabled and configured using variables in `SmartWebView.java`. It uses the [Android-Rate](https://github.com/hotchemi/Android-Rate) library.
-    
-    ```java
-    // Enable the automatic app rating dialog prompt
-    static boolean ASWP_RATINGS = true;
+```java
+// Enable the automatic app rating dialog prompt
+public static boolean ASWP_RATINGS = true;
 
-    // Minimum days after install before showing.
-    static int ASWR_DAYS = 3;
-    // Minimum number of app launches before showing.
-    static int ASWR_TIMES = 10;
-    // Days to wait before reminding if user selects "Later".
-    static int ASWR_INTERVAL = 2;
-    ```
- </Tab>
- <Tab title="iOS">
-    ```md
-    <!-- iOS uses Apple's official `SKStoreReviewController` API. There's less direct configuration over *when* it appears, as Apple controls the timing to limit prompts. You simply request a review at an appropriate point in your app's flow. Enabling/disabling would involve adding/removing the request code. -->
-    <!-- Details on best practices for calling `requestReview` will be added here. -->
-    ```
- </Tab>
-</Tabs>
+// Minimum days after install before showing.
+static int ASWR_DAYS = 3;
+// Minimum number of app launches before showing.
+static int ASWR_TIMES = 10;
+// Days to wait before reminding if user selects "Later".
+static int ASWR_INTERVAL = 2;
+```
 
 ---
 
 ## How it Works
 
-<Tabs>
- <Tab title="Android">
-    1.  If `ASWP_RATINGS` is `true`, `MainActivity` schedules a check using `Functions.get_rating`.
-    2.  `AppRate` library monitors install date and launch counts based on `ASWR_DAYS` and `ASWR_TIMES`.
-    3.  `AppRate.showRateDialogIfMeetsConditions()` displays a dialog if conditions are met and the user hasn't permanently opted out.
-    4.  Options: "Rate Now" (opens Play Store), "Remind Me Later" (waits `ASWR_INTERVAL` days), "No, Thanks" (disables future prompts).
-    <Tip>The dialog requires an internet connection.</Tip>
- </Tab>
- <Tab title="iOS">
-    ```md
-    <!-- 1. At an appropriate, non-intrusive moment in the user experience (e.g., after completing a significant task), your app calls `SKStoreReviewController.requestReview(in:)`.
-         2. The system decides whether to show the standard rating prompt based on internal logic (e.g., user hasn't seen it too recently). You cannot force it to appear.
-         3. If shown, the user can rate the app (1-5 stars) or dismiss the prompt.
-         4. The system handles the interaction; your app doesn't get direct feedback on whether the prompt was shown or what the user did. -->
-    ```
- </Tab>
-</Tabs>
+1.  If `ASWP_RATINGS` is `true`, `MainActivity` schedules a check.
+2.  The `AppRate` library monitors the install date and launch count based on the configured `ASWR_DAYS` and `ASWR_TIMES`.
+3.  If the conditions are met and the user hasn't permanently opted out, a dialog is displayed.
+4.  The user has three options:
+    *   **Rate Now:** Opens the app's page on the Google Play Store.
+    *   **Later:** Dismisses the dialog and waits for `ASWR_INTERVAL` days before potentially showing it again.
+    *   **Don't Ask Again:** Permanently disables future rating prompts for the user.
+
+::: callout tip
+The rating dialog requires an internet connection to function correctly.
+:::
 
 ---
 
-## Customizing Dialog Text (Android)
+## Customizing Dialog Text
 
-<Tabs>
- <Tab title="Android">
-    Change the text displayed in the rating dialog via string resources in `app/src/main/res/values/strings.xml`:
-    *   `rate_dialog_title`, `rate_dialog_message`
-    *   `rate_dialog_ok` ("Rate Now"), `rate_dialog_cancel` ("Later"), `rate_dialog_no` ("No Thanks")
- </Tab>
- <Tab title="iOS">
-    ```md
-    <!-- The standard iOS review prompt's text and appearance are controlled by the system and cannot be customized. -->
-    ```
- </Tab>
-</Tabs>
+You can change the text displayed in the rating dialog by editing the string resources in `app/src/main/res/values/strings.xml`:
+*   `rate_dialog_title`
+*   `rate_dialog_message`
+*   `rate_dialog_ok` (for the "Rate Now" button)
+*   `rate_dialog_cancel` (for the "Later" button)
+*   `rate_dialog_no` (for the "Don't Ask Again" button)
 
 ---
 
 ## Disabling the Rating Prompt
 
-<Tabs>
- <Tab title="Android">
-    Set `ASWP_RATINGS` to `false` in `SmartWebView.java`.
- </Tab>
- <Tab title="iOS">
-    ```md
-    <!-- Remove the call to `SKStoreReviewController.requestReview(in:)` from your code. -->
-    ```
- </Tab>
-</Tabs>
+To completely disable this feature, set `ASWP_RATINGS` to `false` in `SmartWebView.java`.

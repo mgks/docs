@@ -4,129 +4,71 @@ description: 'Setting up and using Firebase push notifications.'
 icon: 'bell'
 ---
 
-Smart WebView integrates Firebase Cloud Messaging (FCM) to enable push notifications, allowing you to engage users even when the app isn't active.
+Smart WebView integrates Firebase Cloud Messaging (FCM) to enable push notifications.
 
 ---
 
 ## Setup
 
-Refer back to the [Getting Started](/smart-webview/getting-started#add-firebase-configuration-important) guide for the initial step of adding the platform-specific Firebase configuration file (`google-services.json` for Android, `GoogleService-Info.plist` for iOS) to your project. This is mandatory for FCM.
+Refer to the [Getting Started](/smart-webview/getting-started#step-2-add-firebase-configuration-important) guide for the initial step of adding the `google-services.json` file to your project. This is mandatory for FCM.
 
-<Tabs>
- <Tab title="Android">
-    1.  Ensure `google-services.json` is in the `app/` directory.
-    2.  The `app/build.gradle` file includes the `firebase-messaging` dependency. Android Studio should sync this automatically.
- </Tab>
- <Tab title="iOS">
-    1. Ensure `GoogleService-Info.plist` is included in your Xcode project and target.
-    2. Add the `Firebase/Messaging` pod to your `Podfile` and run `pod install`.
-    3. Configure Firebase initialization (`FirebaseApp.configure()`) in your `AppDelegate`.
-    4. Set up APNs (Apple Push Notification service) certificates or keys in the Apple Developer portal and upload them to your Firebase project settings.
-    5. Implement methods in `AppDelegate` to register for remote notifications and handle token refresh/message delivery.
- </Tab>
-</Tabs>
-
-<Card horizontal title="Official FCM Android Setup" icon="android" href="https://firebase.google.com/docs/cloud-messaging/android/client" target="_blank">
-</Card>
-<Card horizontal title="Official FCM iOS Setup" icon="apple" href="https://firebase.google.com/docs/cloud-messaging/ios/client" target="_blank">
-</Card>
+::: card
+[Official FCM Android Setup Guide](https://firebase.google.com/docs/cloud-messaging/android/client)
+:::
 
 ---
 
 ## How it Works
 
-*   **Token Generation:** The Firebase SDK automatically generates a unique registration token for the device instance.
-    <Tabs>
-     <Tab title="Android">
-        The `Firebase.java` service listens for new tokens (`onNewToken`) and stores the latest token in `SmartWebView.fcm_token`. `Functions.fcm_token()` attempts to retrieve this and set it as a cookie (`FCM_TOKEN=...`).
-     </Tab>
-     <Tab title="iOS">
-        The `messaging(_:didReceiveRegistrationToken:)` delegate method in AppDelegate receives the token. It needs to be stored or sent to your server.
-     </Tab>
-    </Tabs>
+*   **Token Generation:** The Firebase SDK automatically generates a unique registration token. The `Firebase.java` service listens for new tokens (`onNewToken`) and stores the latest token in `SmartWebView.fcm_token`. The `Functions.fcm_token()` method attempts to retrieve this and set it as a cookie (`FCM_TOKEN=...`) for your web application to access.
 *   **Receiving Messages:**
-    <Tabs>
-     <Tab title="Android">
-        *   **Foreground:** `Firebase.java`'s `onMessageReceived` is triggered. `sendMyNotification` manually displays the notification.
-        *   **Background/Closed:** The Firebase SDK automatically handles displaying notifications sent with a `notification` payload.
-     </Tab>
-     <Tab title="iOS">
-        *   **Foreground:** `userNotificationCenter(_:willPresent:withCompletionHandler:)` (UNUserNotificationCenterDelegate) is called.
-        *   **Background/Closed:** System handles the notification display. `userNotificationCenter(_:didReceive:withCompletionHandler:)` is called when the user taps the notification. `application(_:didReceiveRemoteNotification:fetchCompletionHandler:)` (AppDelegate) is also involved.
-     </Tab>
-    </Tabs>
-*   **Handling Clicks:** Notifications can include data payloads (and `click_action` on Android) to control behavior on tap.
-    <Tabs>
-     <Tab title="Android">
-        The default `click_action` `OPEN_URI` opens the specified `uri` (or `ASWV_URL`) in `MainActivity`.
-     </Tab>
-     <Tab title="iOS">
-        Click handling is done within `userNotificationCenter(_:didReceive:withCompletionHandler:)` by inspecting the notification payload.
-     </Tab>
-    </Tabs>
+    *   **Foreground:** `Firebase.java`'s `onMessageReceived` is triggered, and a notification is manually displayed.
+    *   **Background/Closed:** The Firebase SDK automatically handles displaying notifications sent with a `notification` payload.
+*   **Handling Clicks:** Notifications can include a `data` payload with a `uri` key. When the user taps the notification, the app opens and loads the specified `uri`. If no `uri` is provided, it defaults to the main `ASWV_URL`.
 
 ---
 
 ## Sending Notifications
 
-Use the Firebase Console or programmatically via the FCM HTTP v1 API or legacy APIs. The payload structure is mostly platform-agnostic, but platform-specific overrides exist.
+Use the Firebase Console or the FCM HTTP v1 API to send notifications.
 
-**Example POST Request (Legacy HTTP API):**
+**Example POST Request (FCM HTTP v1 API):**
 
-```json POST https://fcm.googleapis.com/fcm/send
+```json
+// POST https://fcm.googleapis.com/v1/projects/YOUR_PROJECT_ID/messages:send
 {
-  "to": "DEVICE_REGISTRATION_TOKEN", // <-- Get this from the device
-  "notification": { // Basic notification payload (handled automatically in background)
-    "title": "Your Notification Title",
-    "body": "This is the main message body.",
-    "click_action": "OPEN_URI" // Android specific click action
-    // "sound": "default" // iOS uses 'default' or filename
-  },
-  "data": { // Custom data payload (always delivered to app)
-    "uri": "https://your-website.com/specific-page",
-    "custom_key": "custom_value",
-    "nid": "unique_notification_id_123"
-  },
-  "priority": "high", // Android priority
-  "content_available": true // iOS flag for background updates
+  "message": {
+    "token": "DEVICE_REGISTRATION_TOKEN", // <-- Get this from the device
+    "notification": {
+      "title": "Your Notification Title",
+      "body": "This is the main message body."
+    },
+    "android": {
+      "notification": {
+        "click_action": "OPEN_URI"
+      }
+    },
+    "data": { // Custom data payload
+      "uri": "https://your-website.com/specific-page",
+      "nid": "unique_notification_id_123"
+    }
+  }
 }
 ```
 
 **Headers:**
 
 *   `Content-Type: application/json`
-*   `Authorization: key=YOUR_SERVER_KEY` (Find Server Key in Firebase Console: Project Settings > Cloud Messaging)
+*   `Authorization: Bearer YOUR_OAUTH2_ACCESS_TOKEN`
 
-<Tip>
-The newer FCM HTTP v1 API is recommended. See [Firebase Documentation](https://firebase.google.com/docs/cloud-messaging/migrate-v1).
-</Tip>
-
-**Getting the Device Token:**
-
-You need to send the device token generated by the app to your server.
-<Tabs>
- <Tab title="Android">
-    Common methods: Read the `FCM_TOKEN` cookie set by `Functions.fcm_token()`, use JavaScript to call a native function, or modify native code to send the token from `onNewToken` to your backend.
- </Tab>
- <Tab title="iOS">
-    Common method: Send the token received in `messaging(_:didReceiveRegistrationToken:)` to your server via an API call.
- </Tab>
-</Tabs>
+::: callout tip
+The `FCM_TOKEN` cookie can be read by your website's JavaScript to send the token to your server.
+:::
 
 ---
 
 ## Customization
 
-<Tabs>
- <Tab title="Android">
-    *   **Notification Channel:** Customize channel ID (`SmartWebView.asw_fcm_channel`) and names/descriptions in `strings.xml`. Required for Android 8.0+.
-    *   **Notification Icon:** Set in `Firebase.java` (`.setSmallIcon()`). Use a dedicated notification icon resource.
-    *   **Data Handling:** Modify `onMessageReceived` in `Firebase.java` to process `data` payloads.
- </Tab>
- <Tab title="iOS">
-    *   **Notification Presentation:** Customize foreground notification appearance in `userNotificationCenter(_:willPresent:withCompletionHandler:)`.
-    *   **Sounds:** Use custom sound files included in the app bundle.
-    *   **Badges:** Manage the app icon badge count.
-    *   **Data Handling:** Process payloads in `userNotificationCenter(_:didReceive:withCompletionHandler:)` or `application(_:didReceiveRemoteNotification:fetchCompletionHandler:)`.
- </Tab>
-</Tabs>
+*   **Notification Channel:** Customize the channel ID (`SmartWebView.asw_fcm_channel`) and names/descriptions in `app/src/main/res/values/strings.xml`. This is required for Android 8.0+.
+*   **Notification Icon:** Set the icon in `Firebase.java` via `.setSmallIcon()`.
+*   **Data Handling:** Modify `onMessageReceived` in `Firebase.java` to process custom `data` payloads for more complex interactions.
