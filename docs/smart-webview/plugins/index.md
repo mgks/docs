@@ -1,56 +1,46 @@
 ---
 title: 'Plugin Architecture'
-description: 'Understanding the Smart WebView plugin system (v7.0+).'
+description: 'Understanding the Smart WebView plugin system.'
 icon: 'puzzle'
 ---
 
-Starting with version 7.0, Smart WebView introduces a powerful plugin architecture, transforming it into a more extensible foundation for building hybrid applications. This allows developers to add or modify native functionalities without altering the core project code.
+Smart WebView features a powerful plugin architecture, allowing you to extend native functionalities without altering the core project code.
+
+::: callout tip
+Premium plugins are not included in the open-source project. Premium plugin source codes are only available to **[Project Sponsors](https://github.com/sponsors/mgks/sponsorships?sponsor=mgks&tier_id=468838)**.
+:::
 
 ## Core Concepts
 
-*   **Self-Contained:** Plugins are designed as independent modules.
-*   **Self-Registration:** Plugins typically register themselves with the `PluginManager` (or equivalent) when their class is loaded.
-*   **Standardized Interface:** Plugins implement a common interface (e.g., `PluginInterface` on Android) defining essential lifecycle methods and interaction points.
-*   **Central Management:** A manager class (e.g., `PluginManager`) handles plugin registration, initialization, lifecycle event routing (like `onActivityResult`, `onRequestPermissionsResult`, `onDestroy`), and provides controlled access to shared application contexts (`Activity`, `WebView`, `Functions`).
-*   **Configuration:** Plugin behavior can often be configured externally, for instance, through the [Playground](/smart-webview/plugins/playground) class, without needing to modify the plugin's source code.
-*   **Event Handling:** Plugins can react to WebView events (`shouldOverrideUrlLoading`, `onPageStarted`, `onPageFinished`) and native lifecycle events passed through the `PluginManager`.
-*   **Communication:** Plugins can interact with web content via JavaScript Interfaces or by handling custom URL schemes.
+*   **Self-Contained:** Plugins are designed as independent, modular classes.
+*   **Self-Registration:** Plugins register themselves with the `PluginManager` when their class is first loaded by the application.
+*   **Standardized Interface:** All plugins implement the `PluginInterface`, which defines essential lifecycle methods (`initialize`, `onDestroy`, `onActivityResult`, etc.).
+*   **Central Management:** The `PluginManager` class handles plugin registration, initialization, and routing of lifecycle events.
+*   **Configuration:** Plugin behavior can be configured externally through the `Playground` class or disabled entirely in `SmartWebView.java`, preventing the need to modify the plugin's source code.
 
 ## Benefits
 
-*   **Modularity:** Keeps custom features separate, improving maintainability.
+*   **Modularity:** Keeps custom features separate and organized.
 *   **Extensibility:** Easily add new native capabilities.
-*   **Reusability:** Potential for sharing plugins across projects.
-*   **Simplified Updates:** Easier core project updates when custom code is isolated.
+*   **Simplified Updates:** Core project updates are easier when custom code is isolated.
 
 ## Key Components
 
-<Tabs>
- <Tab title="Android">
-    *   **`PluginInterface.java`:** The Java interface defining the contract for all Android plugins. Key methods include `initialize`, `getPluginName`, `onActivityResult`, `onRequestPermissionsResult`, `shouldOverrideUrlLoading`, `onPageStarted`, `onPageFinished`, `onDestroy`, `evaluateJavascript`.
-    *   **`PluginManager.java`:** The central Android class for managing plugins. It's responsible for registration, initialization (passing context and configuration), and dispatching events. Accessed via `SmartWebView.getPluginManager()`.
-    *   **`Playground.java`:** A helper class for configuring plugin defaults and facilitating testing during development. See the [Playground](/smart-webview/plugins/playground) documentation.
-    *   **`plugins/` directory:** The conventional location for Android plugin source files (e.g., `ToastPlugin.java`).
-    *   **Static Initializer Block:** The common pattern for self-registration within an Android plugin class.
-        ```java
-        // Inside YourPlugin.java
-        static {
-            Map<String, Object> defaultConfig = new HashMap<>();
-            // Add any default config values the plugin requires
-            PluginManager.registerPlugin(new YourPlugin(), defaultConfig);
-        }
-        ```
- </Tab>
- <Tab title="iOS">
-    ```md
-    <!-- Details on the iOS plugin architecture will be added here. Key components might include:
-    *   A Swift `PluginInterface` protocol.
-    *   A `PluginManager` class (Swift).
-    *   An equivalent 'Playground' class for configuration/testing.
-    *   A convention for organizing plugin files.
-    *   A registration mechanism. -->
-    ```
- </Tab>
-</Tabs>
+*   **`PluginInterface.java`:** The contract that all plugins must implement. It defines the methods the `PluginManager` will call.
+*   **`PluginManager.java`:** The central hub for managing all registered plugins. It's a singleton accessed via `SmartWebView.getPluginManager()`.
+*   **`Playground.java`:** A dedicated class for configuring and testing plugins during development. See the [Playground](/smart-webview/plugins/playground) documentation.
+*   **`plugins/` directory:** The conventional location for plugin source files.
+*   **Static Initializer Block:** The common pattern used for self-registration within a plugin class.
+    ```java
+    // Inside YourPlugin.java
+    static {
+        // Provide a default configuration for the plugin
+        Map<String, Object> defaultConfig = new HashMap<>();
+        defaultConfig.put("some_key", "default_value");
 
-Ready to build your own? Check out the [Creating Plugins](/smart-webview/plugins/creating-plugins) guide. Explore the individual plugin pages for details on specific functionalities.
+        // Register an instance of the plugin with the PluginManager
+        PluginManager.registerPlugin(new YourPlugin(), defaultConfig);
+    }
+    ```
+
+Ready to build your own? Check out the [Creating Plugins](/smart-webview/plugins/creating-plugins) guide.

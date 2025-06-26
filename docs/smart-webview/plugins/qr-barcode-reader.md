@@ -1,20 +1,59 @@
 ---
-title: 'QR/Barcode Reader'
+title: 'QR/Barcode Reader Plugin (Premium)'
 description: 'Scanning QR codes and barcodes using the device camera.'
 icon: 'qrcode'
 ---
 
-This plugin integrates native QR code and barcode scanning functionality using the device's camera.
+This premium plugin integrates native QR code and barcode scanning functionality using the device's camera.
 
-<Tabs>
- <Tab title="Android">
-    <Info>
-    Detailed documentation for the Android QR/Barcode Reader Plugin, including library dependencies (e.g., ZXing via `journeyapps/zxing-android-embedded`), camera permission handling, triggering the scanner activity (`ActivityResultLauncher`), receiving scan results, and passing results back to the web application (via JavaScript or URL loading), will be added here soon.
-    </Info>
- </Tab>
- <Tab title="iOS">
-    <Info>
-    Detailed documentation for the iOS QR/Barcode Reader Plugin, including using `AVFoundation` (AVCaptureSession, AVCaptureMetadataOutput), camera permission handling (`NSCameraUsageDescription`), presenting the camera view, detecting codes, and passing results back to the web application, will be added here soon.
-    </Info>
- </Tab>
-</Tabs>
+::: callout tip
+This is a premium plugin and is not included in the open-source project. Its source code is only available to **[Project Sponsors](https://github.com/sponsors/mgks/sponsorships?sponsor=mgks&tier_id=468838)**.
+:::
+
+---
+
+## Setup and Configuration
+
+1.  **Obtain the Plugin:** Acquire the plugin files through a GitHub sponsorship.
+2.  **Add to Project:** Place the `QRScannerPlugin.java` file in the `app/src/main/java/mgks/os/swv/plugins/` directory.
+3.  **Enable Plugin:** Ensure the plugin is enabled in `SmartWebView.java`:
+    ```java
+    put("QRScannerPlugin", true);
+    ```
+4.  **Dependencies:** The plugin relies on the `zxing-android-embedded` library. Ensure this dependency is present in your `app/build.gradle` file:
+    ```groovy
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    ```
+5.  **Camera Permission:** The app already requests the `CAMERA` permission, which this plugin requires.
+
+---
+## Usage
+
+The plugin is controlled via a JavaScript interface.
+
+### Starting a Scan from JavaScript
+
+The plugin injects a `window.QRScanner` object into your web page.
+
+```javascript
+// Open the camera and start scanning for a code
+window.QRScanner.scan();
+```
+
+### Callbacks in JavaScript
+
+Define callback functions in your JavaScript to handle the results of the scan.
+
+```javascript
+// Called when a code is successfully scanned
+window.QRScanner.onScanSuccess = function(contents) {
+  console.log('Scanned content:', contents);
+  alert('Scanned: ' + contents);
+  // Process the scanned data in your web app
+};
+
+// Called if the user cancels the scan (e.g., by pressing the back button)
+window.QRScanner.onScanCancelled = function() {
+  console.log('Scan was cancelled by the user.');
+};
+```
