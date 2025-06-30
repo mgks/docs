@@ -115,7 +115,7 @@ module.exports = {
               { title: 'CSS Injection', path: '/smart-webview/plugins/css-injection', icon: 'file-code'}
             ]
           },
-          { title: 'Contributing', path: '/smart-webview/play-store-guide', icon: 'shield-check'},
+          { title: 'Play Store Guide', path: '/smart-webview/play-store-guide', icon: 'shield-check'},
           { title: 'Contributing', path: '/smart-webview/contributing', icon: 'users'},
           { title: 'License', path: '/smart-webview/license', icon: 'file-code'},
         ]
