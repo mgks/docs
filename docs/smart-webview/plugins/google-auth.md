@@ -1,5 +1,5 @@
 ---
-title: 'Google Auth'
+title: 'Google Auth Plugin (Premium)'
 description: 'Implementing native Google Sign-In.'
 icon: 'google'
 ---
