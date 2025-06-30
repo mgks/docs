@@ -107,11 +107,15 @@ module.exports = {
               { title: 'Google Auth', path: '/smart-webview/plugins/google-auth', icon: 'file-code'},
               { title: 'QR & Barcode Reader', path: '/smart-webview/plugins/qr-barcode-reader', icon: 'file-code'},
               { title: 'Biometric Auth', path: '/smart-webview/plugins/biometric-auth', icon: 'file-code'},
-              { title: 'Image Compression', path: '/smart-webview/plugins/image-compression', icon: 'file-code'},
-              { title: 'CSS Injection', path: '/smart-webview/plugins/css-injection', icon: 'file-code'},
+              { title: 'Enhanced Video Player', path: '/smart-webview/plugins/enhanced-video-player', icon: 'file-code'},
+              { title: 'WebRTC', path: '/smart-webview/plugins/webrtc', icon: 'file-code'},
+              { title: 'Local Network Access', path: '/smart-webview/plugins/local-network-access', icon: 'file-code'},
               { title: 'Payment Gateway', path: '/smart-webview/plugins/payment-gateway', icon: 'file-code'},
+              { title: 'Image Compression', path: '/smart-webview/plugins/image-compression', icon: 'file-code'},
+              { title: 'CSS Injection', path: '/smart-webview/plugins/css-injection', icon: 'file-code'}
             ]
           },
+          { title: 'Contributing', path: '/smart-webview/play-store-guide', icon: 'shield-check'},
           { title: 'Contributing', path: '/smart-webview/contributing', icon: 'users'},
           { title: 'License', path: '/smart-webview/license', icon: 'file-code'},
         ]
