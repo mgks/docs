@@ -1,10 +1,10 @@
 ---
-title: 'CSS Injection'
+title: 'CSS Injection Plugin'
 description: 'Dynamically injecting custom CSS styles.'
 icon: 'css3'
 ---
 
-This plugin allows the native application to dynamically inject custom CSS stylesheets or rules into the loaded web pages. (Planned for v7.4)
+This plugin allows the native application to dynamically inject custom CSS stylesheets or rules into the loaded web pages.
 
 ::: callout tip
 This is a premium plugin and is not included in the open-source project. Its source code is only available to **[Project Sponsors](https://github.com/sponsors/mgks/sponsorships?sponsor=mgks&tier_id=468838)**.
