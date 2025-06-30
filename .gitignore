@@ -131,3 +131,5 @@ dist
 
 site
 .DS_Store
+docs/smart-webview/context.md
+docs/smart-webview/createContext.js
