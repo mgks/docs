@@ -1,5 +1,5 @@
 ---
-title: 'Payment Gateway'
+title: 'Payment Gateway Plugin (Premium)'
 description: 'Integrating native payment SDKs.'
 icon: 'credit-card'
 ---
