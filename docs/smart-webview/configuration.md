@@ -156,12 +156,9 @@ public static boolean SWV_DEBUGMODE = true;
 
 ### Plugin Configuration
 
-Control which plugins are active.
+Control which plugins are active. The `ASWP_PLUGIN_SETTINGS` map is the definitive source for enabling or disabling plugins.
 
 ```java
-// Globally enable or disable all plugins
-public static boolean ASWP_PLUGINS = true;
-
 // Individual plugin switches. To disable a plugin, set its value to false.
 public static Map<String, Boolean> ASWP_PLUGIN_SETTINGS = new HashMap<String, Boolean>() {{
     put("AdMobPlugin", true);
@@ -171,6 +168,12 @@ public static Map<String, Boolean> ASWP_PLUGIN_SETTINGS = new HashMap<String, Bo
     put("BiometricPlugin", true);
     put("ImageCompressionPlugin", true);
 }};
+```
+
+Enable the plugin test UI (Playground). (Set to `false` for production!)
+
+```java
+public static boolean SWV_PLAYGROUND = true;
 ```
 
 Remember to review these settings and adjust them according to your application's needs.

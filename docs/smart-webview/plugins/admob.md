@@ -15,15 +15,15 @@ This is a premium plugin and is not included in the open-source project. Its sou
 ## Setup and Configuration
 
 1.  **Obtain the Plugin:** Acquire the plugin files through a GitHub sponsorship.
-2.  **Add to Project:** Place the `AdMobPlugin.java` file in the `app/src/main/java/mgks/os/swv/plugins/` directory.
+2.  **Add to Project:** Place the `AdMobPlugin.java` file in the `plugins/` directory.
 3.  **AdMob App ID:**
-    *   Add your AdMob App ID to `app/src/main/AndroidManifest.xml`:
+    *   Add your AdMob App ID to `AndroidManifest.xml`:
         ```xml
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="YOUR_ADMOB_APP_ID"/>
         ```
-    *   Also, update the `app_id` string in `app/src/main/res/values/ads.xml`.
+    *   Also, update the `app_id` string in `res/values/ads.xml`.
 4.  **Enable Plugin:** Ensure the plugin is enabled in `SmartWebView.java`:
     ```java
     put("AdMobPlugin", true);

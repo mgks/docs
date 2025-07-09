@@ -15,7 +15,7 @@ This is a premium plugin and is not included in the open-source project. Its sou
 ## Setup and Configuration
 
 1.  **Obtain the Plugin:** Acquire the plugin files through a GitHub sponsorship.
-2.  **Add to Project:** Place the `QRScannerPlugin.java` file in the `app/src/main/java/mgks/os/swv/plugins/` directory.
+2.  **Add to Project:** Place the `QRScannerPlugin.java` file in the `plugins/` directory.
 3.  **Enable Plugin:** Ensure the plugin is enabled in `SmartWebView.java`:
     ```java
     put("QRScannerPlugin", true);

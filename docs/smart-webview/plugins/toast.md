@@ -49,7 +49,7 @@ if (plugin instanceof mgks.os.swv.plugins.ToastPlugin toastPlugin) {
 
 ### From JavaScript
 
-After the page has loaded, you can call the injected `window.Toast` object's methods.
+After the page has loaded, you can call the methods of the injected `window.Toast` helper object. This object provides a convenient wrapper around the actual native JavaScript interface, which is named `ToastInterface`.
 
 ```javascript
 // Check if the interface is ready

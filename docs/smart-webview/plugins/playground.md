@@ -35,9 +35,11 @@ To test a new or existing plugin, you can modify `Playground.java`:
 
 Add a call to `runPluginDiagnostic` inside the `runAllDiagnostics` method. This safely gets your plugin's instance and executes a simple test.
 
+The first parameter is the unique plugin name string, and the second is the test function to execute.
+
 ```java
 // Inside runAllDiagnostics() in Playground.java
-runPluginDiagnostic("MyCustomPlugin", MyCustomPlugin.class, plugin -> {
+runPluginDiagnostic("MyCustomPlugin", plugin -> {
     // This code runs only if MyCustomPlugin is found and enabled.
     // Call a method on your plugin to test it.
     plugin.performNativeAction("Diagnostic Test");
