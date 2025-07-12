@@ -21,15 +21,23 @@ You have two options:
     git clone https://github.com/mgks/Android-SmartWebView.git
     ```
 
-### Step 2: Add Firebase Configuration (Important)
+### Step 2: Configure Your App
+All major configuration is now done in a single file.
 
-If you plan to use Firebase Cloud Messaging (Push Notifications), you need to add your Firebase project's configuration file.
+1.  Open the project in your file explorer or IDE.
+2.  Navigate to `app/src/main/assets/` and open the `swv.properties` file.
+3.  Edit the values like `app.url`, `analytics.gtag.id`, and `admob.app.id` to match your project's requirements.
 
-1.  Go to your [Firebase Console](https://console.firebase.google.com/).
-2.  Create a new project or select an existing one.
-3.  Add an **Android app** to your project, following the on-screen instructions. Use `mgks.os.swv` as the package name during setup unless you plan to change it later.
-4.  Download the `google-services.json` file provided during the setup.
-5.  Place this downloaded `google-services.json` file directly into the `app/` directory of your Smart WebView project.
+::: callout tip
+See the **[Configuration Guide](/smart-webview/configuration)** for a detailed explanation of all available options in `swv.properties`.
+:::
+
+### Step 3: Add Firebase Configuration (Important)
+If you plan to use Firebase Cloud Messaging (Push Notifications), you still need your project's `google-services.json` file.
+
+1.  Go to your [Firebase Console](https://console.firebase.google.com/) and follow the steps to add an Android app.
+2.  Download the `google-services.json` file.
+3.  Place this file directly into the `app/` directory of your Smart WebView project.
     ```bash
     Android-SmartWebView/
     ├── app/
@@ -42,25 +50,9 @@ If you plan to use Firebase Cloud Messaging (Push Notifications), you need to ad
 This step is crucial for Firebase features to work. See the [Firebase Messaging](/smart-webview/features/firebase-messaging) guide for more details.
 :::
 
-### Step 3: Load Project in Android Studio
-
-1.  Open Android Studio.
-2.  Select `File > Open...`.
-3.  Navigate to the directory where you downloaded or cloned the Smart WebView project and select the root folder.
-4.  Click `Open`.
-
-### Step 4: Sync and Build Project
-
-1.  Allow Android Studio to index the files and download all necessary Gradle dependencies. This might take a few minutes.
-2.  Once the sync is complete, it's good practice to clean and rebuild:
-    *   Go to `Build > Clean Project`.
-    *   Then go to `Build > Rebuild Project`.
-
-### Step 5: Run the App
-
-1.  Connect an Android device or start an emulator.
-2.  Select your device/emulator from the target dropdown menu in Android Studio.
-3.  Click the `Run 'app'` button (green play icon) or use the shortcut `Shift + F10`.
-
+### Step 4: Load and Build in Android Studio
+1.  Open the project folder in Android Studio.
+2.  Allow Gradle to sync and download all dependencies.
+3.  Click the `Run 'app'` button to build and launch the app on an emulator or a connected device.
 
 Your Smart WebView app should now build and launch! If you encounter issues, double-check the `google-services.json` file placement and ensure the build process completed without errors.

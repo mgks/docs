@@ -51,11 +51,13 @@ When using the drawer layout (`ASWV_LAYOUT = 1`), you can customize it:
 
 ## Local Assets
 
-Place files in `app/src/main/assets/` to bundle them with your app. Access them in the WebView using the path `file:///android_asset/YOUR_FILENAME`. The project includes:
+Place files in `app/src/main/assets/web/` to bundle them with your app. Access them in the WebView using the path `file:///android_asset/web/YOUR_FILENAME`. The project includes:
 - `error.html`
 - `offline.html`
 - `script.js`
 - `style.css`
+
+The root `assets` directory contains the main `swv.properties` configuration file.
 
 ---
 
