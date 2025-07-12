@@ -93,6 +93,7 @@ module.exports = {
               { title: 'Sharing', path: '/smart-webview/features/sharing', icon: 'share-2'},
               { title: 'Rating System', path: '/smart-webview/features/rating-system', icon: 'star'},
               { title: 'Printing', path: '/smart-webview/features/printing', icon: 'printer'},
+              { title: 'Dark Mode & Theming', path: '/smart-webview/features/dark-mode', icon: 'moon'},
             ]
           },
           { title: 'Plugins',
