@@ -86,12 +86,10 @@ module.exports = {
             icon: 'zap',
             children: [
               { title: 'File Handling', path: '/smart-webview/features', icon: 'file'},
-              { title: 'Location', path: '/smart-webview/features/location', icon: 'map-pin'},
               { title: 'Firebase Messaging', path: '/smart-webview/features/firebase-messaging', icon: 'bell'},
               { title: 'Analytics', path: '/smart-webview/features/analytics', icon: 'chart-line'},
               { title: 'Navigation', path: '/smart-webview/features/navigation', icon: 'arrow-right-from-line'},
               { title: 'Sharing', path: '/smart-webview/features/sharing', icon: 'share-2'},
-              { title: 'Rating System', path: '/smart-webview/features/rating-system', icon: 'star'},
               { title: 'Printing', path: '/smart-webview/features/printing', icon: 'printer'},
               { title: 'Dark Mode & Theming', path: '/smart-webview/features/dark-mode', icon: 'moon'},
             ]
@@ -104,6 +102,9 @@ module.exports = {
               { title: 'Creating Plugins', path: '/smart-webview/plugins/creating-plugins', icon: 'file-code'},
               { title: 'Playground', path: '/smart-webview/plugins/playground', icon: 'file-code'},
               { title: 'Toast', path: '/smart-webview/plugins/toast', icon: 'file-code'},
+              { title: 'Location Access', path: '/smart-webview/plugins/location', icon: 'file-code'},
+              { title: 'Rating System', path: '/smart-webview/plugins/rating-system', icon: 'file-code'},
+              { title: 'Dialogs & Alerts', path: '/smart-webview/plugins/dialog', icon: 'file-code'},
               { title: 'Admob', path: '/smart-webview/plugins/admob', icon: 'file-code'},
               { title: 'Google Auth', path: '/smart-webview/plugins/google-auth', icon: 'file-code'},
               { title: 'QR & Barcode Reader', path: '/smart-webview/plugins/qr-barcode-reader', icon: 'file-code'},
