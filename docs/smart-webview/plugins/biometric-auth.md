@@ -16,8 +16,8 @@ This is a premium plugin and is not included in the open-source project. Its sou
 
 The authentication flow is designed to be a true security gate, not just a dismissible prompt.
 
-- **Blocking Overlay:** When authentication is triggered, a full-screen overlay immediately blocks all app content, preventing any "glimpses" of the underlying UI.
-- **Non-Dismissible:** The biometric prompt cannot be dismissed by tapping outside of it. The user must either authenticate successfully or explicitly exit the app.
+- **Total UI Lock:** When authentication is triggered, a full-screen overlay immediately blocks all app content. The native Toolbar, search menu, and navigation drawer are also hidden and disabled, preventing any interaction with the underlying UI.
+- **Guided Security Setup:** If the user does not have a screen lock (PIN, fingerprint, etc.) set up, the overlay will prompt them to secure their device and a button will take them directly to the Android Security Settings.
 - **Persistent Lock:** If the user sends the app to the background and then resumes it, the authentication flow is automatically re-triggered, preventing bypass through the "recents" screen.
 
 ---
@@ -26,24 +26,17 @@ The authentication flow is designed to be a true security gate, not just a dismi
 
 1.  **Obtain the Plugin:** Acquire the `BiometricPlugin.java` file through a GitHub sponsorship.
 2.  **Add to Project:** Place the file in the `plugins/` directory.
-3.  **Enable Plugin:** Ensure the plugin is enabled in `SmartWebView.java`:
-    ```java
-    put("BiometricPlugin", true);
-    ```
-4.  **Configure Auth on Launch:** To enable authentication every time the app starts, go to `Playground.java` and set the `authOnAppLaunch` config to `true`.
+3.  **Enable Plugin:** Ensure `BiometricPlugin` is listed in the `plugins.enabled` property in `app/src/main/assets/swv.properties`.
+4.  **Configure Auth on Launch:** To enable authentication every time the app starts, set the `biometric.trigger.launch` property to `true` in `swv.properties`.
 
-    ```java
-    // In Playground.java -> configurePlugins()
-    runPluginAction("BiometricPlugin", plugin -> {
-        Map<String, Object> config = SmartWebView.getPluginManager().getPluginConfig("BiometricPlugin");
-        if (config != null) {
-            config.put("authOnAppLaunch", true); // Set to true to enable
-        }
-    });
+    ```bash
+    # In swv.properties
+    biometric.trigger.launch=true
     ```
     If `false` (the default), authentication will only be triggered manually from your JavaScript.
 
 ---
+
 ## Usage
 
 The plugin is primarily controlled via a JavaScript interface.

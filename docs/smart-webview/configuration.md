@@ -65,13 +65,16 @@ ui.splash.extend=true
 ```
 
 ### Plugins
-Control which plugins are active and enable the testing UI.
+Control which plugins are active and their core behaviors.
 ```bash
 # Comma-separated list of plugins to enable. Case-sensitive.
 plugins.enabled=AdMobPlugin,JSInterfacePlugin,ToastPlugin,QRScannerPlugin,BiometricPlugin,ImageCompressionPlugin
 
 # Enable the Playground floating UI for testing plugins. Set to false for production.
 plugins.playground.enabled=true
+
+# [BiometricPlugin] Require authentication every time the app starts or resumes.
+biometric.trigger.launch=false
 ```
 
 ### Permissions
@@ -82,13 +85,9 @@ Define which groups of permissions to request when the app starts.
 permissions.on.launch=NOTIFICATIONS,LOCATION
 ```
 
-### Analytics & Ads
-Configure IDs for external services.
+### Analytics
+Configure your Google Analytics Measurement ID.
 ```bash
 # Your Google Analytics Measurement ID (e.g., G-XXXXXXXXXX).
 analytics.gtag.id=G-7XXC1C7CRQ
-
-# Your AdMob Application ID. Also needs to be set in AndroidManifest.xml.
-# This value in swv.properties is for reference and future use.
-admob.app.id=ca-app-pub-3940256099942544~3347511713
 ```

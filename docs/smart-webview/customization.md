@@ -11,7 +11,7 @@ Smart WebView is designed to be easily customizable. You can modify various aspe
 ## App Name and Package ID
 
 *   **App Name:** Change the `app_name` string value in `app/src/main/res/values/strings.xml`.
-*   **Package ID:** Right-click on `mgks.os.swv` in the `java` directory (Project view), select `Refactor > Rename`, choose "Rename package", enter your ID (e.g., `com.yourcompany.yourapp`), and let Android Studio refactor. Also, update the `applicationId` in `app/build.gradle`.
+*   **Package ID:** The `applicationId` is now configured directly from `swv.properties`. Change the `build.application.id` property and rebuild. Android Studio will handle the refactoring.
 
 ::: callout danger
 Changing the Package ID after release complicates app updates on Google Play.
@@ -27,9 +27,9 @@ Replace icons in `app/src/main/res/mipmap-*` directories. Use Android Studio's "
 
 ## UI Appearance
 
-*   **Colors:** Define your palette in `app/src/main/res/values/colors.xml`.
-*   **Themes:** Modify app themes in `app/src/main/res/values/styles.xml` and `app/src/main/res/values/themes.xml`.
-*   **Splash Screen Background:** Customize in `app/src/main/res/drawable/background_splash.xml` and the `SplashTheme` in `styles.xml`.
+*   **Colors:** Define your palette in `app/src/main/res/values/colors.xml` and `app/src/main/res/values-night/colors.xml`.
+*   **Themes:** Modify app themes in `app/src/main/res/values/themes.xml`. Core theme structure is now based on Material 3.
+*   **Splash Screen:** The new Android 12+ splash screen is configured in `app/src/main/res/values/themes.xml` under the `Theme.App.Starting` style.
 
 ---
 
@@ -41,11 +41,11 @@ Modify the XML layout files in `app/src/main/res/layout/` (e.g., `activity_main.
 
 ## Navigation Drawer
 
-When using the drawer layout (`ASWV_LAYOUT = 1`), you can customize it:
+When using the drawer layout (`ui.layout=1`), you can customize it:
 
 *   **Menu Items:** Define items in `app/src/main/res/menu/activity_main_drawer.xml`.
 *   **Header:** Customize the header view in `app/src/main/res/layout/drawer_main_header.xml`.
-*   **Item Click Handling:** Modify `onNavigationItemSelected` in `Functions.java`.
+*   **Item Click Handling:** Modify `onNavigationItemSelected` in `MainActivity.java`.
 
 ---
 

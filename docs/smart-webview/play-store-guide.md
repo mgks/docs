@@ -10,40 +10,39 @@ Publishing your Smart WebView application to the Google Play Store involves seve
 
 ### Step 1: Final Configuration
 
-Before building your app for release, finalize its configuration in `app/src/main/java/mgks/os/swv/SmartWebView.java`.
+Before building your app for release, finalize its configuration in `app/src/main/assets/swv.properties`.
 
 *   **Disable Debug Mode:** This is the most important step.
-    ```java
-    public static boolean SWV_DEBUGMODE = false; // Set to false for production!
+    ```bash
+    # In swv.properties
+    debug.mode=false
     ```
-*   **Set Production URL:** Ensure `ASWV_APP_URL` points to your live website.
-*   **Review Feature Toggles:** Double-check all `ASWP_*` flags to make sure only the features you need are enabled. Disabling unused features reduces the number of permissions your app requests.
+*   **Disable Playground:** The testing UI should not be in your production app.
+    ```bash
+    # In swv.properties
+    plugins.playground.enabled=false
+    ```
+*   **Set Production URL:** Ensure `app.url` points to your live website.
+*   **Review Feature Toggles:** Double-check all `feature.*` and `plugins.*` flags to make sure only the features you need are enabled. Disabling unused features reduces the number of permissions your app requests.
 
 ---
 
 ### Step 2: App Identity and Versioning
 
-Your app's identity is defined in `app/build.gradle`.
+Your app's identity and version are now controlled from `swv.properties`. The `app/build.gradle` file reads these values automatically.
 
-*   **Application ID:** Set a unique `applicationId`. This is your app's permanent ID on the Play Store.
-    ```groovy
-    // app/build.gradle
-    defaultConfig {
-        applicationId 'com.yourcompany.yourapp' // <-- Change this
-        // ...
-    }
-    ```
+*   **Application ID:** Set a unique `build.application.id`. This is your app's permanent ID on the Play Store.
 *   **Versioning:**
-    *   `versionCode`: An integer that must be incremented with every new release you upload.
-    *   `versionName`: A public-facing string for your users (e.g., "1.0.1").
-    ```groovy
-    // app/build.gradle
-    defaultConfig {
-        // ...
-        versionCode 1       // Increment to 2 for the next update
-        versionName '1.0' // Change to "1.1", etc. as needed
-    }
-    ```
+    *   `build.version.code`: An integer that must be incremented with every new release you upload.
+    *   `build.version.name`: A public-facing string for your users (e.g., "1.0.1").
+
+```bash
+# In swv.properties
+
+build.application.id=com.yourcompany.yourapp
+build.version.code=1
+build.version.name=1.0
+```
 
 ---
 

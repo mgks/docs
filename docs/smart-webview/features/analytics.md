@@ -11,18 +11,18 @@ Smart WebView supports integration with Google Analytics using the gtag.js libra
 ## Configuration
 
 1.  **Get Your Measurement ID:** Obtain your Google Analytics Measurement ID (e.g., `G-XXXXXXXXXX`) from your Google Analytics property settings.
-2.  **Set the ID in Configuration:** Assign your Measurement ID to the `ASWV_GTAG` variable in `SmartWebView.java`:
-    ```java
-    // Your Google Analytics Measurement ID
-    public static String ASWV_GTAG = "G-7XXC1C7CRQ"; // <-- Replace with your actual ID
+2.  **Set the ID in `swv.properties`:** Assign your Measurement ID to the `analytics.gtag.id` property in `app/src/main/assets/swv.properties`.
+    ```bash
+    # In swv.properties
+    analytics.gtag.id=G-7XXC1C7CRQ # <-- Replace with your actual ID
     ```
-    If `ASWV_GTAG` is left empty or `null`, Analytics integration will be disabled.
+    If the ID is left empty, Analytics integration will be disabled.
 
 ---
 
 ## How it Works
 
-*   **Dynamic Injection:** Instead of adding the gtag.js snippet to your HTML, Smart WebView injects it dynamically using JavaScript *after* the page has finished loading. This is handled by the `onPageFinished` event in `MainActivity.java`, which calls the `Functions.inject_gtag` method.
+*   **Dynamic Injection:** Instead of adding the gtag.js snippet to your HTML, Smart WebView injects it dynamically using JavaScript *after* the page has finished loading. This is handled by the `onPageFinished` event in `MainActivity.java`.
 *   **Improved Performance:** This approach prevents the Analytics script from blocking initial page rendering.
 
 ---
@@ -50,9 +50,3 @@ document.getElementById('myButton').addEventListener('click', function() {
 ```
 
 Refer to the [Google Analytics gtag.js documentation](https://developers.google.com/analytics/devguides/collection/gtagjs/events) for more details.
-
----
-
-## Identifying App Traffic
-
-The User-Agent string modification feature can help distinguish traffic from your app. If `POSTFIX_USER_AGENT` is enabled (default is `true`), the `USER_AGENT_POSTFIX` (default: "SWVAndroid") will be appended to the User-Agent string. You can create filters or segments in Google Analytics based on this identifier.
