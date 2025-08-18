@@ -18,11 +18,17 @@ module.exports = {
   srcDir: 'docs',       // Source directory for Markdown files
   outputDir: 'site',    // Directory for generated static site
 
+  sidebar: {
+    collapsible: true,
+    defaultCollapsed: false,
+  },
+
   // Theme Configuration
   theme: {
     name: 'sky',            // Themes: 'default', 'sky'
-    defaultMode: 'light',   // Initial color mode: 'light' or 'dark'
+    defaultMode: 'dark',   // Initial color mode: 'light' or 'dark'
     enableModeToggle: true, // Show UI button to toggle light/dark modes
+    positionMode: 'top',
     customCss: [            // Array of paths to custom CSS files
       '/assets/css/custom.css', // Custom TOC styles
     ]
@@ -41,7 +47,7 @@ module.exports = {
     // These are fallbacks or site-wide settings.
     seo: {
       // Default meta description if a page doesn't have one in its frontmatter
-      defaultDescription: 'docmd is a Node.js command-line tool for generating beautiful, lightweight static documentation sites from Markdown files.',
+      defaultDescription: 'Explore open-source projects by Ghazi Khan, including Smart WebView, GitHub Tree, and more.',
       openGraph: { // For Facebook, LinkedIn, etc.
         // siteName: 'docmd Documentation', // Optional, defaults to config.siteTitle
         // Default image for og:image if not specified in page frontmatter
@@ -122,12 +128,12 @@ module.exports = {
           { title: 'License', path: '/smart-webview/license', icon: 'file-code'},
         ]
       },
-      { title: 'Keep to Notes',
-        path: '/keep-to-notes/',
+      { title: 'Notes Migrator',
+        path: '/notes-migrator/',
         icon: 'notebook',
         children: [
-          { title: 'Documentation', path: '/keep-to-notes/documentation', icon: 'scroll'},
-          { title: 'Migration', path: '/keep-to-notes/migration', icon: 'arrow-right-from-line'},
+          { title: 'Documentation', path: '/notes-migrator/documentation', icon: 'scroll'},
+          //{ title: 'Migration', path: '/notes-migrator/migration', icon: 'arrow-right-from-line'},
         ]
       },
       { title: 'GitHub Tree',
@@ -139,81 +145,6 @@ module.exports = {
       },
       { title: 'Docmd', path: 'https://docmd.mgks.dev', icon: 'feather', external: true },
   ],
-
-  /*
-  "navigation":
-
-      {
-        "anchor": "Smart Webview",
-        "icon": "mobile",
-        "groups":[
-
-          {
-            "group": "Features",
-            "pages": [
-              "smart-webview/features/file-handling",
-              "smart-webview/features/location",
-              "smart-webview/features/firebase-messaging",
-              "smart-webview/features/analytics",
-              "smart-webview/features/navigation",
-              "smart-webview/features/sharing",
-              "smart-webview/features/rating-system",
-              "smart-webview/features/printing"
-            ]
-          },
-          {
-            "group": "Plugins",
-            "pages": [
-              "smart-webview/plugins/architecture",
-              "smart-webview/plugins/creating-plugins",
-              "smart-webview/plugins/playground",
-              "smart-webview/plugins/toast",
-              "smart-webview/plugins/admob",
-              "smart-webview/plugins/google-auth",
-              "smart-webview/plugins/qr-barcode-reader",
-              "smart-webview/plugins/biometric-auth",
-              "smart-webview/plugins/image-compression",
-              "smart-webview/plugins/css-injection",
-              "smart-webview/plugins/payment-gateway"
-            ]
-          },
-          {
-            "group": "Contributing",
-            "pages": [
-              "smart-webview/contributing",
-              "smart-webview/license"
-            ]
-          }
-        ]
-      },
-      {
-        "anchor": "GitHub Tree",
-        "icon": "tree",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "github-tree/index",
-              "github-tree/usage"
-            ]
-          }
-        ]
-      },
-      {
-        "anchor": "Keep to Notes",
-        "icon": "notebook",
-        "groups": [
-          {
-            "group": "Documentation",
-            "pages": [
-              "keep-to-notes/index",
-              "keep-to-notes/migration"
-            ]
-          }
-        ]
-      }
-    ]
-  }*/
 
   // Footer Configuration
   // Markdown is supported here.
