@@ -17,6 +17,7 @@ module.exports = {
   // Directory Configuration
   srcDir: 'docs',       // Source directory for Markdown files
   outputDir: 'site',    // Directory for generated static site
+  copyCode: true,
 
   sidebar: {
     collapsible: true,
@@ -79,7 +80,8 @@ module.exports = {
   // Icons are kebab-case names from Lucide Icons (https://lucide.dev/)
   navigation: [
       { title: 'Welcome', path: '/', icon: 'home' },
-      { title: 'Memoryblock', path: 'https://docs.memoryblock.io', icon: 'grid-2x2', external: true },
+      { title: 'Memoryblock', path: 'https://docs.memoryblock.io', icon: 'box', external: true },
+      { title: 'docmd', path: 'https://docmd.mgks.dev', icon: 'feather', external: true },
       { title: 'Smart Webview',
         path: '/smart-webview/',
         icon: 'smartphone',
@@ -128,6 +130,16 @@ module.exports = {
           { title: 'License', path: '/smart-webview/license', icon: 'file-code'},
         ]
       },
+      { title: 'aiContext',
+        path: '/ai-context/',
+        icon: 'brain-circuit',
+        children: [
+          { title: 'Getting Started', path: '/ai-context/getting-started', icon: 'monitor-down'},
+          { title: 'Configuration', path: '/ai-context/configuration', icon: 'settings'},
+          { title: 'CLI Reference', path: '/ai-context/cli-reference', icon: 'square-terminal'},
+          { title: 'Presets', path: '/ai-context/presets', icon: 'flag'}
+        ]
+      },
       { title: 'Notes Migrator',
         path: '/notes-migrator/',
         icon: 'notebook',
@@ -143,7 +155,6 @@ module.exports = {
           { title: 'Getting Started', path: '/github-tree/getting-started', icon: 'monitor-down'},
         ]
       },
-      { title: 'Docmd', path: 'https://docmd.mgks.dev', icon: 'feather', external: true },
   ],
 
   // Footer Configuration
