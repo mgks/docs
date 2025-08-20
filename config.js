@@ -144,15 +144,15 @@ module.exports = {
         path: '/notes-migrator/',
         icon: 'notebook',
         children: [
-          { title: 'Documentation', path: '/notes-migrator/documentation', icon: 'scroll'},
-          //{ title: 'Migration', path: '/notes-migrator/migration', icon: 'arrow-right-from-line'},
+          { title: 'Migration', path: '/notes-migrator/migration', icon: 'arrow-right-from-line'},
         ]
       },
       { title: 'GitHub Tree',
         path: '/github-tree/',
         icon: 'tree-pine',
         children: [
-          { title: 'Getting Started', path: '/github-tree/getting-started', icon: 'monitor-down'},
+          { title: 'Usage', path: '/github-tree/usage', icon: 'chart-pie'},
+          { title: 'Private Repo', path: '/github-tree/private-repo', icon: 'lock'},
         ]
       },
   ],
