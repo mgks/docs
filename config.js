@@ -79,7 +79,7 @@ module.exports = {
   // Navigation Structure (Sidebar)
   // Icons are kebab-case names from Lucide Icons (https://lucide.dev/)
   navigation: [
-      { title: 'Welcome', path: '/', icon: 'home' },
+      { title: 'Homepage', path: 'https://mgks.dev', icon: 'home', external: true },
       { title: 'Memoryblock', path: 'https://docs.memoryblock.io', icon: 'box', external: true },
       { title: 'docmd', path: 'https://docmd.mgks.dev', icon: 'feather', external: true },
       { title: 'Smart Webview',
@@ -92,6 +92,7 @@ module.exports = {
           { title: 'Features',
             path: '/smart-webview/features',
             icon: 'zap',
+            collapsible: true,
             children: [
               { title: 'File Handling', path: '/smart-webview/features', icon: 'file'},
               { title: 'Firebase Messaging', path: '/smart-webview/features/firebase-messaging', icon: 'bell'},
@@ -105,6 +106,7 @@ module.exports = {
           { title: 'Plugins',
             path: '/smart-webview/plugins',
             icon: 'plug',
+            collapsible: true,
             children: [
               { title: 'Architecture', path: '/smart-webview/plugins', icon: 'file-code'},
               { title: 'Creating Plugins', path: '/smart-webview/plugins/creating-plugins', icon: 'file-code'},
@@ -140,7 +142,8 @@ module.exports = {
           { title: 'Presets', path: '/ai-context/presets', icon: 'flag'}
         ]
       },
-      { title: 'Notes Migrator',
+      { title: 'GitHub (@mgks)', path: 'https://github.com/mgks', icon: 'github', external: true },
+      /*{ title: 'Notes Migrator',
         path: '/notes-migrator/',
         icon: 'notebook',
         children: [
@@ -154,7 +157,7 @@ module.exports = {
           { title: 'Usage', path: '/github-tree/usage', icon: 'chart-pie'},
           { title: 'Private Repo', path: '/github-tree/private-repo', icon: 'lock'},
         ]
-      },
+      },*/
   ],
 
   // Footer Configuration
