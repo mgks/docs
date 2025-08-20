@@ -13,6 +13,6 @@
     "license": "MIT",
     "private": true,
     "dependencies": {
-        "@mgks/docmd": "^0.2.1"
+        "@mgks/docmd": "^0.2.3"
     }
 }
