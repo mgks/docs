@@ -7,11 +7,7 @@ description: 'Smart WebView is a versatile and lightweight **project** designed 
 
 Smart WebView is a versatile and lightweight **project** designed to help you quickly convert your website or web application into a native mobile app. It provides a robust **foundation** with essential features built-in, saving you significant development time.
 
-::: card
-
-[Smart WebView on GitHub](https://github.com/mgks/Android-SmartWebView/)
-
-:::
+::: button Smart_WebView_on_GitHub external:https://github.com/mgks/Android-SmartWebView/
 
 **Key Highlights:**
 

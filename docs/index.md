@@ -11,23 +11,15 @@ mode: 'center'
 
 Smart WebView introduces a powerful plugin architecture, empowering developers to seamlessly extend and customize their hybrid applications. This update enhances core functionalities and streamlines the development process, making it easier to integrate advanced features like QR code scanning, Google Analytics, and more.
 
-<a href="/smart-webview/">Get Started with SmartWebView</a>
+::: button Get_Started_with_SmartWebView /smart-webview/ color:#0CA647
 
 :::
 
-::: card GitHubTree
+::: card aiContext
 
-With GitHubTree, visualize the directory structure of any public GitHub repository with a clean interface.
+a command-line interface designed to solve a critical problem in modern, AI-assisted software development: **providing clean, relevant, and comprehensive context to Large Language Models (LLMs).**
 
-<a href="/github-tree/">Get Started with GitHub Tree</a>
-
-:::
-
-::: card Google Keep to Notes
-
-A simple, secure, browser-based tool to convert your Google Keep notes (exported via Google Takeout) into the `.enex` format, ready for import into Apple Notes or Evernote.
-
-<a href="/keep-to-notes/">Get Started with Keep to Notes</a>
+::: button Get_Started_aiContext /ai-context/ color:#0C61A6
 
 :::
 
@@ -35,7 +27,7 @@ A simple, secure, browser-based tool to convert your Google Keep notes (exported
 
 Memoryblock is an AI memory layer for seamless context sharing between humans and AI systems. It provides an intuitive way to save, organize, and reference your important context in AI conversations.
 
-<a href="https://docs.memoryblock.io/" target="_blank">Checkout docs.memoryblock.io</a>
+::: button Checkout_docs.memoryblock.io external:https://docs.memoryblock.io/ color:#2a2a2a
 
 :::
 
@@ -43,14 +35,14 @@ Memoryblock is an AI memory layer for seamless context sharing between humans an
 
 Docmd (docmd) is a Node.js command-line tool dedicated to generating beautiful, lightweight static documentation sites from standard Markdown files. It champions the philosophy of "zero clutter, just content," prioritizing ease of use for documentation authors and a clean, performant experience for readers.
 
-<a href="https://docmd.mgks.dev/" target="_blank">Checkout docmd</a>
+::: button Checkout_docmd external:https://docmd.mgks.dev/ color:#0C6BE8
 
 :::
 
 ## Explore
 
-[Github @mgks](https://github.com/mgks)
+::: button GitHub_@mgks external:https://github.com/mgks color:#2a2a2a
 
-[Github Sponsors](https://github.com/sponsors/mgks)
+::: button GitHub_Sponsors external:https://github.com/sponsors/mgks color:#C78B0A
 
 For support or inquiries, reach out via [email](mailto:hello@mgks.dev).
