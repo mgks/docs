@@ -9,19 +9,16 @@ The `aicontext.json` file is the heart of the tool, ensuring reproducible contex
 {
   "excludePaths": [
     ".DS_Store",
-    ".env",
     ".git/",
-    "LICENSE",
-    "build/",
-    "dist/",
     "node_modules"
   ],
   "includeExtensions": [
-    ".css",
     ".js",
     ".json",
-    ".md",
-    ".ts"
+    ".md"
+  ],
+  "includePaths": [
+    ".github/"
   ],
   "maxFileSizeKB": 500,
   "outputFile": "context.md",
@@ -38,9 +35,10 @@ This file is designed to be checked into version control. This allows your entir
 
 **Configuration Keys:**
 
-- `excludePaths`: An array of file names, directory names, or glob patterns to exclude.
-- `includeExtensions`: An array of file extensions to include in the context.
-- `maxFileSizeKB`: The maximum size (in kilobytes) for any single file to be included.
-- `outputFile`: The name of the markdown file to be generated.
-- `useGitignore`: A boolean (`true` or `false`) that determines whether to read your project's `.gitignore` file and add its patterns to the exclusion list. Defaults to `false`.
-- `presets`: An array of strings listing the presets that have been applied to this configuration.
+-   `excludePaths`: An array of file names, directory names, or glob patterns to exclude.
+-   `includeExtensions`: An array of file extensions to include in the context.
+-   `includePaths`: An array of specific files or directories to **forcefully include**, even if they would normally be ignored (e.g., hidden directories like `.github/`).
+-   `maxFileSizeKB`: The maximum size (in kilobytes) for any single file to be included.
+-   `outputFile`: The name of the markdown file to be generated.
+-   `useGitignore`: A boolean (`true` or `false`) that determines whether to read your project's `.gitignore` file.
+-   `presets`: An array of strings listing the presets that have been applied.

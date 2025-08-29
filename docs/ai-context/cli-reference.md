@@ -5,9 +5,15 @@ description: "A complete reference guide for all available command-line flags an
 
 All command-line flags are designed to modify the `aicontext.json` configuration file.
 
+::: callout tip Precedence
+Flags are applied in a specific order. For example, `--reset` runs first, giving you a clean slate before other flags like `--preset` are applied.
+:::
+
 | Flag | Alias | Description | Example |
 |---|---|---|---|
+| `--reset` | | **Destructive.** Resets the configuration to base defaults before applying any other flags in the same command. | `... --reset -p rust` |
 | `--preset` | `-p` | Applies one or more technology presets. | `... -p nodejs rust` |
+| `--include`| `-i` | Forcefully includes a path, even if it's hidden. | `... -i .github/` |
 | `--add-exclude` | `-a` | Adds a path or pattern to the `excludePaths` list. | `... -a 'docs/'` |
 | `--remove-exclude` | `-r` | Removes a path from the `excludePaths` list. | `... -r 'vendor/'` |
 | `--add-ext` | | Adds a file extension to the `includeExtensions` list. | `... --add-ext .vue` |

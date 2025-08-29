@@ -5,6 +5,8 @@ description: "An introduction to aiContext, a CLI tool for generating high-signa
 
 `aicontext` is a command-line interface designed to solve a critical problem in modern, AI-assisted software development: **providing clean, relevant, and comprehensive context to Large Language Models (LLMs).**
 
+::: button aiContext_on_GitHub external:https://github.com/mgks/aiContext/
+
 As development workflows become increasingly automated, AI agents and CI/CD pipelines need a reliable way to understand a project's architecture and code. Pasting individual files is inefficient, and providing the entire repository includes irrelevant noise (build artifacts, dependencies, etc.) that degrades AI performance.
 
 `aicontext` bridges this gap by intelligently scanning your project based on a persistent configuration file. It generates a single, portable markdown file that contains:

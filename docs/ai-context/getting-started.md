@@ -10,21 +10,21 @@ Using `npx` is the easiest way to run `aicontext` as it ensures you are always u
 :::
 
 ```bash
-npx aicontext [options]
+npx @mgks/aicontext [options]
 ```
 
 If you prefer to have the command available system-wide, you can install it globally via npm:
 
 ```bash
-npm install -g aicontext
+npm install -g @mgks/aicontext
 ```
 
 ### Your First Context File
 
 ```bash
-npx aicontext -p nodejs
+npx @mgks/aicontext -p nodejs
 ```
 
 ```bash
-npx aicontext
+npx @mgks/aicontext
 ```
