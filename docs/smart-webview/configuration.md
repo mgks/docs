@@ -48,6 +48,14 @@ feature.exit.dialog=true
 feature.open.external.urls=true
 ```
 
+### Security
+Control app-wide security settings.
+```bash
+# Block screenshots, screen recording, and content visibility in the "recents" screen.
+# Default is false. Set to true to enforce for the entire app session.
+security.block.screenshots=false
+```
+
 ### UI & Layout
 Control screen orientation and the main navigation structure.
 ```bash
