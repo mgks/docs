@@ -51,9 +51,16 @@ feature.open.external.urls=true
 ### Security
 Control app-wide security settings.
 ```bash
+# Verify SSL certificates for HTTPS connections. Set to false only for development with self-signed certs.
+security.verify.ssl=true
+
 # Block screenshots, screen recording, and content visibility in the "recents" screen.
 # Default is false. Set to true to enforce for the entire app session.
 security.block.screenshots=false
+
+# Allow the WebView to accept third-party cookies. Required for some captcha (like Google reCAPTCHA) and social login providers.
+# Default is false. Set to true to enable.
+security.accept.thirdparty.cookies=false
 ```
 
 ### UI & Layout
